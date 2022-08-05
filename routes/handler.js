@@ -18,7 +18,7 @@ router.use(bodyParser.json())
 
 
 //get all comments from db
-router.get('', async (req, res) => {
+router.get('/', async (req, res) => {
   const data = Schemas.Comment;
 
   const dataFromDb = await data.find({}).sort({createdAt: 1}).exec((err, dbdata) => {
