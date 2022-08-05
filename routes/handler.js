@@ -7,7 +7,7 @@ var ObjectId = require('mongodb').ObjectID;
 router.use(bodyParser.urlencoded({ extended: true }));
 
 router.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "."); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Origin", "nodeprojectreact.herokuapp.com"); // update to match the domain you will make the request from
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.header("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE");
   res.header("Access-Control-Allow-Credentials", true)
@@ -18,10 +18,10 @@ router.use(bodyParser.json())
 
 
 //get all comments from db
-router.get('/', async (req, res) => {
+router.get('', async (req, res) => {
   const data = Schemas.Comment;
 
-  const dataFromDb = await data.find({}).sort({createdAt: 1}).exec((err, dbdata) => {
+ await data.find({}).sort({createdAt: 1}).exec((err, dbdata) => {
     if (err) throw err;
     if (dbdata) {
       res.end(JSON.stringify(dbdata));
