@@ -4,6 +4,8 @@ const routsHandler = require('./routes/handler');
 const mongoose = require('mongoose');
 require('dotenv/config');
 
+mongoose.set('strictQuery', true)
+
 const app = express();
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
